@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Athlon Gimnasio · Rosario</title>
+<meta name="description" content="Gimnasio Athlon en Rosario: musculación, cardio, funcional, boxeo, cycle, zumba y pump. Pedí tu clase de prueba gratis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0e; --bg2: #141418; --card: #1b1b21; --line: #2a2a32;
+    --acc: #ff5a1f; --acc2: #ff8a3d; --txt: #f5f5f7; --muted: #a3a3ad;
+    --wa: #25d366; --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--txt); font-family: 'Inter', system-ui, Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+  .display { font-family: 'Anton', Impact, 'Arial Black', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: .5px; line-height: 1.05; }
+  .eyebrow { color: var(--acc); font-weight: 800; font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font-weight: 800; font-size: 16px; border: 0; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+  .btn:active { transform: scale(.97); }
+  .btn-acc { background: var(--acc); color: #fff; }
+  .btn-acc:hover { background: var(--acc2); }
+  .btn-ghost { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.18); }
+  .btn-ghost:hover { background: rgba(255,255,255,.14); }
+  section { padding: 88px 0; }
+  h2 { font-size: clamp(40px, 6vw, 64px); margin: 10px 0 18px; }
+  .lead { color: var(--muted); font-size: 18px; max-width: 620px; margin: 0; }
+
+  /* nav */
+  header { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .2s ease; }
+  header.solid { background: rgba(12,12,14,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { font-family: 'Anton', Impact, sans-serif; font-size: 30px; letter-spacing: 2px; }
+  .logo span { color: var(--acc); }
+  .nav ul { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; font-weight: 600; font-size: 15px; color: #d8d8de; }
+  .nav ul a:hover { color: #fff; }
+  .nav .btn { padding: 11px 20px; font-size: 14px; }
+  @media (max-width: 860px) { .nav ul { display: none; } }
+
+  /* hero */
+  .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 140px 0 70px; overflow: hidden;
+    background: #111 url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=70') center/cover no-repeat; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,14,.55) 0%, rgba(12,12,14,.7) 50%, var(--bg) 100%), linear-gradient(90deg, rgba(12,12,14,.85) 0%, rgba(12,12,14,0) 70%); }
+  .hero .container { position: relative; }
+  .hero h1 { font-size: clamp(54px, 10vw, 120px); line-height: 1.14; margin: 14px 0 20px; }
+  .hero h1 em { font-style: normal; color: var(--acc); }
+  .hero p { font-size: clamp(17px, 2.2vw, 21px); color: #e2e2e8; max-width: 560px; margin: 0 0 32px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 56px; max-width: 760px; }
+  .stat { background: rgba(20,20,24,.85); backdrop-filter: blur(6px); padding: 20px 22px; }
+  .stat b { display: block; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 34px; line-height: 1.1; }
+  .stat b .star { color: #ffc43d; }
+  .stat span { color: var(--muted); font-size: 14px; font-weight: 500; }
+  @media (max-width: 560px) { .stats { grid-template-columns: 1fr 1fr; } .stat:last-child { grid-column: span 2; } }
+
+  /* actividades */
+  .grid-act { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  .act { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 240px; padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; background: var(--card) center/cover no-repeat; isolation: isolate; }
+  .act::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(12,12,14,.1) 0%, rgba(12,12,14,.9) 100%); }
+  .act h3 { font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 34px; text-transform: uppercase; margin: 0; line-height: 1.1; }
+  .act p { margin: 6px 0 0; color: #cfcfd6; font-size: 15px; }
+  .act.a1 { background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=60'); }
+  .act.a2 { background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=60'); }
+  .act.a3 { background-image: linear-gradient(135deg, #3a1607, #1b1b21); }
+  .act.a4 { background-image: linear-gradient(135deg, #2b0d1d, #1b1b21); }
+  .act.a5 { background-image: linear-gradient(135deg, #1a1033, #1b1b21); }
+  .act.a6 { background-image: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=900&q=60'); }
+  @media (max-width: 860px) { .grid-act { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .grid-act { grid-template-columns: 1fr; } .act { min-height: 190px; } }
+
+  /* planes */
+  .planes { background: var(--bg2); }
+  .grid-plan { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; align-items: stretch; }
+  .plan { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px 28px; display: flex; flex-direction: column; }
+  .plan.top { border: 2px solid var(--acc); position: relative; }
+  .plan.top::after { content: 'El más elegido'; position: absolute; top: -13px; left: 28px; background: var(--acc); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .plan h3 { margin: 0; font-size: 20px; }
+  .plan .price { font-family: 'Anton', Impact, sans-serif; font-size: 48px; margin: 14px 0 4px; line-height: 1; }
+  .plan .price small { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--muted); font-weight: 500; }
+  .plan ul { list-style: none; padding: 0; margin: 20px 0 28px; color: #d4d4db; font-size: 15px; }
+  .plan li { padding: 8px 0 8px 28px; position: relative; border-top: 1px solid var(--line); }
+  .plan li::before { content: ''; position: absolute; left: 2px; top: 15px; width: 12px; height: 7px; border-left: 2.5px solid var(--acc); border-bottom: 2.5px solid var(--acc); transform: rotate(-45deg); }
+  .plan .btn { margin-top: auto; width: 100%; }
+  .note { color: var(--muted); font-size: 14px; margin-top: 22px; }
+  @media (max-width: 860px) { .grid-plan { grid-template-columns: 1fr; } }
+
+  /* horarios + instalaciones */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .hours { margin-top: 30px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .hours div { display: flex; justify-content: space-between; padding: 16px 22px; border-top: 1px solid var(--line); font-weight: 600; }
+  .hours div:first-child { border-top: 0; }
+  .hours div span:last-child { color: var(--muted); font-weight: 500; }
+  .hours div.today { background: rgba(255,90,31,.1); }
+  .hours div.today span:first-child::after { content: ' · hoy'; color: var(--acc); font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .chip { background: var(--card); border: 1px solid var(--line); padding: 10px 16px; border-radius: 999px; font-size: 15px; font-weight: 600; color: #dcdce2; }
+  @media (max-width: 860px) { .two { grid-template-columns: 1fr; gap: 64px; } }
+
+  /* sedes */
+  .sedes { background: var(--bg2); }
+  .grid-sede { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  .sede { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .sede iframe, .sede .map-ph { width: 100%; height: 200px; border: 0; display: block; filter: grayscale(1) invert(.92) contrast(.9); }
+  .sede .map-ph { filter: none; background: repeating-linear-gradient(45deg, #1f1f26 0 14px, #23232b 14px 28px); display: grid; place-items: center; color: var(--muted); font-size: 14px; }
+  .sede .info { padding: 22px; }
+  .sede h3 { margin: 0 0 4px; font-size: 20px; }
+  .sede p { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+  .sede a.link { color: var(--acc); font-weight: 700; font-size: 15px; }
+  @media (max-width: 860px) { .grid-sede { grid-template-columns: 1fr; } }
+
+  /* clase de prueba */
+  .trial { background: linear-gradient(135deg, var(--acc) 0%, #c93a0b 100%); border-radius: 28px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 44px; align-items: center; }
+  .trial h2 { margin-top: 0; color: #fff; }
+  .trial p { color: rgba(255,255,255,.9); font-size: 18px; margin: 0; }
+  form { display: grid; gap: 12px; }
+  input, select { width: 100%; padding: 16px 18px; border-radius: 14px; border: 0; font: inherit; font-size: 16px; background: #fff; color: #111; }
+  form .btn { background: #111; color: #fff; padding: 17px; }
+  form .btn:hover { background: #000; }
+  @media (max-width: 860px) { .trial { grid-template-columns: 1fr; padding: 34px 22px; } }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 110px; color: var(--muted); font-size: 14px; }
+  footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; }
+  footer a:hover { color: #fff; }
+
+  .wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 62px; height: 62px; border-radius: 50%; background: var(--wa); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.45); transition: transform .15s ease; }
+  .wa-float:hover { transform: scale(1.06); }
+  .wa-float svg { width: 32px; height: 32px; fill: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="container nav">
+    <a href="#" class="logo">ATH<span>LON</span></a>
+    <ul>
+      <li><a href="#actividades">Actividades</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#sedes">Sedes</a></li>
+    </ul>
+    <a href="#prueba" class="btn btn-acc">Clase gratis</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Gimnasio en Rosario · 3 sedes</div>
+    <h1 class="display">Entrená<br>en serio.<br><em>Entrená en Athlon.</em></h1>
+    <p>Musculación, cardio y clases todos los días, con profes que te ayudan a llegar a tu objetivo.</p>
+    <div class="actions">
+      <a href="#prueba" class="btn btn-acc">Quiero mi clase de prueba</a>
+      <a href="#planes" class="btn btn-ghost">Ver planes</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b><span class="star">★</span> 4.86</b><span>230 reseñas</span></div>
+      <div class="stat"><b>6 a 22 h</b><span>Lunes a viernes</span></div>
+      <div class="stat"><b>3 sedes</b><span>Centro, Pellegrini y Mendoza</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="actividades">
+  <div class="container">
+    <div class="eyebrow reveal">Actividades</div>
+    <h2 class="display reveal">Elegí cómo entrenar</h2>
+    <p class="lead reveal">Sala de musculación completa y clases para todos los niveles. Algunas actividades requieren reserva previa.</p>
+    <div class="grid-act">
+      <div class="act a1 reveal"><h3>Musculación</h3><p>Pesos libres, máquinas y área de cardio.</p></div>
+      <div class="act a2 reveal"><h3>Funcional</h3><p>Fuerza, resistencia y movilidad en grupo.</p></div>
+      <div class="act a3 reveal"><h3>Boxeo</h3><p>Técnica, golpes y mucho cardio.</p></div>
+      <div class="act a4 reveal"><h3>Cycle</h3><p>Bici indoor con música, a full.</p></div>
+      <div class="act a5 reveal"><h3>Zumba</h3><p>Bailá, divertite y quemá calorías.</p></div>
+      <div class="act a6 reveal"><h3>Pump</h3><p>Barra y discos al ritmo de la música.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="planes" class="planes">
+  <div class="container">
+    <div class="eyebrow reveal">Planes</div>
+    <h2 class="display reveal">Precios claros, sin vueltas</h2>
+    <p class="lead reveal">Elegí tu plan y empezá hoy. Consultanos por WhatsApp cualquier duda.</p>
+    <div class="grid-plan">
+      <div class="plan reveal">
+        <h3>2 veces por semana</h3>
+        <div class="price">$ —<small> / mes</small></div>
+        <ul><li>Sala de musculación</li><li>Área de cardio</li><li>Plan de entrenamiento</li></ul>
+        <a href="#prueba" class="btn btn-ghost">Empezar</a>
+      </div>
+      <div class="plan top reveal">
+        <h3>Pase libre</h3>
+        <div class="price">$ —<small> / mes</small></div>
+        <ul><li>Musculación todos los días</li><li>Todas las clases</li><li>Las 3 sedes</li><li>Seguimiento con profe</li></ul>
+        <a href="#prueba" class="btn btn-acc">Empezar</a>
+      </div>
+      <div class="plan reveal">
+        <h3>3 veces por semana</h3>
+        <div class="price">$ —<small> / mes</small></div>
+        <ul><li>Sala de musculación</li><li>Área de cardio</li><li>Clases a elección</li></ul>
+        <a href="#prueba" class="btn btn-ghost">Empezar</a>
+      </div>
+    </div>
+    <p class="note">* Acá van tus precios actuales. Los cambiamos cada vez que los actualices.</p>
+  </div>
+</section>
+
+<section id="horarios">
+  <div class="container two">
+    <div>
+      <div class="eyebrow reveal">Horarios · Sede Centro</div>
+      <h2 class="display reveal">Abierto cuando vos podés</h2>
+      <div class="hours reveal" id="hours">
+        <div data-d="1"><span>Lunes</span><span>06:00 – 22:00</span></div>
+        <div data-d="2"><span>Martes</span><span>06:00 – 22:00</span></div>
+        <div data-d="3"><span>Miércoles</span><span>06:00 – 22:00</span></div>
+        <div data-d="4"><span>Jueves</span><span>06:00 – 22:00</span></div>
+        <div data-d="5"><span>Viernes</span><span>06:00 – 22:00</span></div>
+        <div data-d="6"><span>Sábado</span><span>08:00 – 14:00</span></div>
+        <div data-d="0"><span>Domingo</span><span>Cerrado</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow reveal">Instalaciones</div>
+      <h2 class="display reveal">Todo lo que necesitás</h2>
+      <div class="chips reveal">
+        <span class="chip">Sala de musculación</span><span class="chip">Pesos libres</span><span class="chip">Área de cardio</span>
+        <span class="chip">Área funcional</span><span class="chip">Elongación</span><span class="chip">Entrenador personal</span>
+        <span class="chip">Vestuarios y duchas</span><span class="chip">Lockers</span><span class="chip">Aire acondicionado</span>
+        <span class="chip">Calefacción</span><span class="chip">Wi-Fi</span><span class="chip">Cafetería</span>
+        <span class="chip">Masajes</span><span class="chip">Coworking</span><span class="chip">Estacionamiento</span>
+        <span class="chip">Accesible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sedes" class="sedes">
+  <div class="container">
+    <div class="eyebrow reveal">Sedes</div>
+    <h2 class="display reveal">Siempre hay un Athlon cerca</h2>
+    <div class="grid-sede">
+      <div class="sede reveal">
+        <iframe loading="lazy" title="Mapa sede Centro" src="https://maps.google.com/maps?q=Presidente%20Roca%201467%2C%20Rosario&z=15&output=embed"></iframe>
+        <div class="info"><h3>Sede Centro</h3><p>Pres. Roca 1467, Rosario</p><a class="link" href="https://www.google.com/maps/search/?api=1&query=Presidente+Roca+1467+Rosario" target="_blank" rel="noopener">Cómo llegar →</a></div>
+      </div>
+      <div class="sede reveal">
+        <div class="map-ph">Mapa de la sede</div>
+        <div class="info"><h3>Sede Pellegrini</h3><p>Dirección de la sede</p><a class="link" href="#prueba">Cómo llegar →</a></div>
+      </div>
+      <div class="sede reveal">
+        <div class="map-ph">Mapa de la sede</div>
+        <div class="info"><h3>Sede Mendoza</h3><p>Dirección de la sede</p><a class="link" href="#prueba">Cómo llegar →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prueba">
+  <div class="container">
+    <div class="trial reveal">
+      <div>
+        <h2 class="display">Tu primera clase es gratis</h2>
+        <p>Dejanos tus datos y te escribimos por WhatsApp para coordinar el día y la hora.</p>
+      </div>
+      <form id="trial-form">
+        <input name="nombre" placeholder="Tu nombre" required autocomplete="name">
+        <select name="actividad" required>
+          <option value="">¿Qué querés probar?</option>
+          <option>Musculación</option><option>Funcional</option><option>Boxeo</option>
+          <option>Cycle</option><option>Zumba</option><option>Pump</option>
+        </select>
+        <select name="sede" required>
+          <option value="">¿En qué sede?</option>
+          <option>Centro (Pres. Roca)</option><option>Pellegrini</option><option>Mendoza</option>
+        </select>
+        <button class="btn" type="submit">Pedir clase gratis por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container row">
+    <div><span class="logo" style="font-size:22px;color:#fff">ATH<span>LON</span></span> &nbsp;·&nbsp; Gimnasio en Rosario</div>
+    <div><a href="https://www.instagram.com/athlon_gym/" target="_blank" rel="noopener">Instagram @athlon_gym</a> &nbsp;·&nbsp; <a href="tel:+543416748054">0341 674-8054</a></div>
+    <div style="opacity:.6">Demo hecha por GYMWEB</div>
+  </div>
+</footer>
+
+<a class="wa-float" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.92-4.66-4.1-.13-.18-1.11-1.48-1.11-2.83 0-1.34.71-2 .96-2.28.25-.27.54-.34.72-.34l.52.01c.17.01.39-.06.61.47.24.56.79 1.92.86 2.06.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33Z"/></svg>
+</a>
+
+<script>
+  // Número del gimnasio en formato internacional (sin +, sin espacios)
+  const WA_NUMBER = '543416748054';
+  const wa = (msg) => 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+
+  document.getElementById('wa-float').href = wa('Hola Athlon! Quería consultar por los planes.');
+
+  document.getElementById('trial-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const msg = `Hola Athlon! Soy ${f.get('nombre')} y quiero mi clase de prueba gratis de ${f.get('actividad')} en la sede ${f.get('sede')}.`;
+    window.open(wa(msg), '_blank', 'noopener');
+  });
+
+  // Resalta el día de hoy en los horarios
+  const today = new Date().getDay();
+  document.querySelector(`#hours [data-d="${today}"]`)?.classList.add('today');
+
+  // Fondo del menú al bajar
+  const header = document.getElementById('top');
+  const onScroll = () => header.classList.toggle('solid', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Aparición suave al hacer scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
